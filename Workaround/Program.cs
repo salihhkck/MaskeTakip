@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Business.Concrete;
+using Entities.Concrete;
 using System;
 using System.IO.Pipes;
 
@@ -21,16 +23,29 @@ namespace Workaround
             SelamVer();
 
 
+            Person person1 = new Person();
+            person1.FirstName = "SALİH";
+            person1.LastName = "KÜÇÜK";
+            person1.DateOfBirthYear = 1998;
+            person1.NationalIdentity = 70663020172;
+
+
+            PttManager pttManager= new PttManager(new PersonManager());
+            pttManager.GiveMask(person1);
+
+            Console.ReadLine();
+
+
             #region
             //---------------------//
             //Diziler-Arrays
 
             //string ogrenci1 = "Salih";
-            //string ogrenci2 = "GFFFFFFFF";  //sıkıntılı olan
-            //string ogrenci3 = "XDF";
+            //string ogrenci2 = "GFFFFFFFF";  //sıkıntılı olan bu şekilde tanımlamaktır.
+            //string ogrenci3 = "XDF";       // Ddoğrusu aşağıdaki gibi tanımlamadır.
 
 
-            //string[] ogrenciler = new string[3];
+            //string[] ogrenciler = new string[3];   //3 elemanlı dizi tanımladık.
             //ogrenciler[0] = "Engin";
             //ogrenciler[1] = "Salih";
             //ogrenciler[2] = "xlarge";
@@ -46,41 +61,52 @@ namespace Workaround
             //}
 
 
-            //string[] sehirler1 = new[] { "Ankara", "İstanbul", "İzmir" };
-            //string[] sehirler2 = new[] { "Tokat", "Erbaa", "Kadıköy" };
+            string[] sehirler1 = new[] { "Ankara", "İstanbul", "İzmir" };
+            string[] sehirler2 = new[] { "Tokat", "Erbaa", "Kadıköy" };
 
-            //foreach (string sehir in sehirler1)
-            //{
-            //    Console.WriteLine(sehir);
-            //}
+            foreach (string sehir in sehirler1)
+            {
+                Console.WriteLine(sehir);
+            }
 
-            ////--Kullamnım bu şekilde ilerliyor--//
-            //List<string> yenisehirler1 = new List<string> { "Ankara 33", "33 İstanbul", " 66 İzmir"};
-            //yenisehirler1.Add("Tokat 60");
+            int[] sayilar = new int[] { 1, 2, 3, 4 };
 
-            //foreach(var  sehirler in yenisehirler1)
-            //{
-            //    Console.WriteLine(sehirler);
-            //}
+            foreach (int sayi in sayilar) // hangi tipte ise dizi onu verip sayi kısmına istediğimizi yazabiliriz. Takma isimdir. 
+            {
+                Console.WriteLine(sayi);
+            }
+
+
+
+            // --Kullanım bu şekilde ilerliyor-- //
+            List<string> yenisehirler1 = new List<string> { "Ankara 33", "33 İstanbul", " 66 İzmir" };
+            yenisehirler1.Add("Tokat 60");
+
+            foreach (var sehirler in yenisehirler1)
+            {
+                Console.WriteLine(sehirler);
+            }
 
             #endregion
 
 
             Toplama();
-        
-       
 
-    }
 
-        static void SelamVer(string isim="İsimsiz") //yukarda selamver() içerisi boş bırakılır yani parametre verilmezse isimsiz yazacaktır.
+
+
+        }
+
+        static void SelamVer(string isim = "İsimsiz") //yukarda selamver() içerisi boş bırakılır yani parametre verilmezse isimsiz yazacaktır.
         {
             Console.WriteLine("Merhaba " + isim);
         }
 
+        
 
-        static int Toplama(int sayi1=55, int sayi2=61) //yukarda toplama() içerisi boş bırakılır yani parametre verilmezse 55+61 işlem sonucu yazacaktır.
+        static int Toplama(int sayi1 = 55, int sayi2 = 61) //yukarda toplama() içerisi boş bırakılır yani parametre verilmezse 55+61 işlem sonucu yazacaktır.
         {
-            int sonuc= sayi1 + sayi2;
+            int sonuc = sayi1 + sayi2;
             Console.WriteLine("Toplam " + sonuc);
             return sonuc;
         }
@@ -97,7 +123,7 @@ namespace Workaround
 
 
 
-   
+
 }
 
 
